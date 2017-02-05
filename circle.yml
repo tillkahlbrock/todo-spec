@@ -1,0 +1,16 @@
+version: 2
+executorType: docker
+containerInfo:
+  - image: ubuntu:14.04
+    cmd: ["/bin/bash"]
+  - image: till/jtodo
+stages:
+  build:
+    workDir: ~/something
+    steps:
+      - type: checkout
+      # Add an entry to /etc/hosts
+      - type: shell
+        command: pwd && echo "Working as intended"
+      - type: shell
+        command: curl -vvv http://127.0.0.1:9884/tasks
