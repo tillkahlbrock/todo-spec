@@ -8,6 +8,9 @@ stages:
   build:
     workDir: ~/something
     steps:
+      - type: shell
+        pwd: /
+        command: apt-get update && apt-get install -y git
       - type: checkout
       # Add an entry to /etc/hosts
       - type: shell
