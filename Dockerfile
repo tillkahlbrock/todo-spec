@@ -9,7 +9,7 @@ RUN go get github.com/tillkahlbrock/todo-cli
 RUN ln -sf /go/bin/todo-cli /usr/bin/todo-cli
 
 RUN mkdir /app
-ADD . /app/
+ADD spec/ /app/
 WORKDIR /app
 RUN bundle install
 
