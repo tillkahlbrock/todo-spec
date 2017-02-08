@@ -1,0 +1,14 @@
+version: "2"
+services:
+  todo-server:
+    image: till/jtodo
+
+  todo-cli:
+    build: .
+    environment:
+      - TODO_SERVER_URL=http://todo-server:9884
+    volumes:
+      - .:/app
+    links:
+      - todo-server
+    command: bundle exec cucumber

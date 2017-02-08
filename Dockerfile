@@ -2,13 +2,15 @@ FROM ruby:2.1.10
 
 RUN apt-get update && apt-get install -y golang
 
-RUN mkdir -p /app/go
-ADD . /app/
-WORKDIR /app/go
-
-ENV GOPATH=/app/go
+RUN mkdir /go
+WORKDIR /go
+ENV GOPATH=/go
 RUN go get github.com/tillkahlbrock/todo-cli
-RUN ln -sf /app/go/bin/todo-cli /usr/bin/todo-cli
+RUN ln -sf /go/bin/todo-cli /usr/bin/todo-cli
 
+RUN mkdir /app
+ADD . /app/
 WORKDIR /app
 RUN bundle install
+
+CMD ["/bin/sh"]
