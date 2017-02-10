@@ -1,5 +1,5 @@
 FROM alpine
 
-RUN mkdir /app
-ADD spec/ /app/
-VOLUME /app
+RUN mkdir /spec
+ADD spec/ /spec/
+VOLUME /spec
